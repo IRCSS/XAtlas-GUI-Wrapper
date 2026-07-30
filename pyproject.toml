@@ -1,0 +1,37 @@
+[project]
+name = "xatlas-gui"
+version = "0.1.0"
+description = "A small GUI and CLI wrapper for xatlas OBJ unwrapping"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "numpy>=2.0",
+    "pyside6>=6.8",
+    "trimesh>=4.4",
+    "xatlas>=0.0.11",
+]
+
+[project.scripts]
+xatlas-gui = "xatlas_gui.__main__:main"
+
+[dependency-groups]
+dev = [
+    "pyinstaller>=6.0",
+    "pytest>=8.0",
+    "ruff>=0.9",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/xatlas_gui"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
